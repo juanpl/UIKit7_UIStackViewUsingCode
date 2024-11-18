@@ -9,23 +9,36 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    private let swiftBetaLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "In App Purchase"
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 32)
+        return label
+    }()
 
     private let swiftbetaStackView: UIStackView = {
        let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 20
-        stackView.alignment = .leading
         return stackView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addSubview(swiftBetaLabel)
         view.addSubview(swiftbetaStackView)
         
         NSLayoutConstraint.activate([
-            swiftbetaStackView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            swiftBetaLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 20),
+            swiftBetaLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            swiftBetaLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            
+            
+            swiftbetaStackView.topAnchor.constraint(equalTo: swiftBetaLabel.bottomAnchor, constant: 20),
             swiftbetaStackView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             swiftbetaStackView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
         ])
